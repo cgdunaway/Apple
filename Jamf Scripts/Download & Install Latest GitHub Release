@@ -1,0 +1,46 @@
+#!/bin/bash
+
+#Download & Install Latest GitHub Release
+#Download pkg from github, verify signature contains expected Team ID, then install. This could be easier if a repo uses a standardized package name (that doesn't include a changing version number, for instance). This script will find the latest version release, then download the associated package
+#By Greg Dunaway, 7/22/22
+
+#Jamf Variables
+USR="$4"	#GitHub User/Org Name
+PRJ="$5"	#GitHub Repo Name
+TeamID="$6"	#Expected Developer Team ID
+
+DIR="/tmp/" #Download Directory
+
+
+#Find latest release version
+DL=$(curl -s "https://api.github.com/repos/$USR/$PRJ/releases/latest" | grep "browser_download_url.*pkg" | cut -d : -f 2,3 | tr -d \")
+PKG=$(echo $DL | rev | cut -d / -f 1 | rev)
+
+echo "Download link: $DL"
+echo "Package name: $PKG"
+
+#Move to /tmp, Download and check
+echo "Downloading to directory: $DIR"
+cd $DIR
+curl -sLO $DL
+if [[ -z $(ls | grep $PKG) ]]; then
+  echo "Error: $PKG could not be downloaded"
+  exit 1
+else
+  echo "$PKG downloaded"
+fi
+
+#Confirm TeamID
+Signature=$(pkgutil --check-signature $PKG | grep "Developer ID Installer")
+echo "Checking signature..."
+if [[ $Signature != *$TeamID* ]]; then
+  echo "Error: $Signature does not contain expected value: $TeamID. Confirm the expected TeamID and try again."
+  exit 1
+else
+  echo "$Signature contains expected value: $TeamID"
+fi
+
+#Install
+installer -pkg $PKG -target /
+
+exit 0
