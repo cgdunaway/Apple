@@ -20,12 +20,12 @@
 
 ### Variables
 # Set the location of the control file
-controlFile = "/var/tmp/depnotify.log"
+controlFile="/var/tmp/depnotify.log"
 # Expected location of the Jamf binary
-jamfBinary = "/usr/local/bin/jamf"
+jamfBinary="/usr/local/bin/jamf"
 
 # Set the Main Title at the top of the window
-echo "Command: MainTitle: Welcome to AnyCo" >> "$controlFile"
+echo "Command: MainTitle: Welcome to AnyCo!" >> "$controlFile"
 
 # Text in the MainText area can include a forced "newline" with the text "\\n"
 echo "Command: MainText: Welcome to your new Mac.\\nSit tight as we do some basic setup to get you ready for success.\\nYou can see the status of the setup on the progress bar below." >> "$controlFile"
