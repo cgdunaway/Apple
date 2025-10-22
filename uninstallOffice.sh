@@ -18,12 +18,9 @@ rm -rf /Applications/Microsoft\ Word.app 2>/dev/null
 rm /Library/LaunchDaemons/com.microsoft.office.licensingV2.helper.plist 2>/dev/null
 rm /Library/LaunchDaemons/com.microsoft.autoupdate.helper.plist 2>/dev/null
 rm /Library/LaunchDaemons/com.microsoft.onedriveupdaterdaemon.plist 2>/dev/null
-
 rm /Library/LaunchAgents/com.microsoft.update.agent.plist 2>/dev/null
-
 rm /Library/PrivilegedHelperTools/com.microsoft.office.licensingV2.helper 2>/dev/null
 rm /Library/PrivilegedHelperTools/com.microsoft.autoupdate.helper 2>/dev/null
-
 rm /Library/Preferences/com.microsoft.office.licensingV2.* 2>/dev/null
 
 # User Library Files
@@ -37,16 +34,15 @@ rm /Users/$currentUser/Library/Containers/com.microsoft.Powerpoint 2>/dev/null
 rm /Users/$currentUser/Library/Containers/com.microsoft.RMS-XPCService 2>/dev/null
 rm /Users/$currentUser/Library/Containers/com.microsoft.Word 2>/dev/null
 rm /Users/$currentUser/Library/Containers/com.microsoft.onenote.mac 2>/dev/null
-
 rm /Users/$currentUser/Library/Cookies/com.microsoft.onedrive.binarycookies 2>/dev/null
 rm /Users/$currentUser/Library/Cookies/com.microsoft.onedriveupdater.binarycookies 2>/dev/null
-
 rm /Users/$currentUser/Library/Group\ Containers/UBF8T346G9.ms 2>/dev/null
 rm /Users/$currentUser/Library/Group\ Containers/UBF8T346G9.Office 2>/dev/null
 rm /Users/$currentUser/Library/Group\ Containers/UBF8T346G9.OfficeOneDriveSyncIntegration 2>/dev/null
 rm /Users/$currentUser/Library/Group\ Containers/UBF8T346G9.OfficeOsfWebHost 2>/dev/null
 rm /Users/$currentUser/Library/Group\ Containers/UBF8T346G9.OneDriveStandaloneSuite 2>/dev/null
 
+# Saved Application State
 rm -rf /Users/$currentUser/Library/Saved\ Application\ State/com.microsoft.* 2>/dev/null
 
 
